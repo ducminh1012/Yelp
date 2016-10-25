@@ -104,9 +104,9 @@ extension BusinessesViewController: UISearchBarDelegate{
 }
 
 extension BusinessesViewController: SearchButtonDelegate{
-    func didSearchWithData(_ data: [String : (IndexPath, String)], haveDeal: Bool) {
+    func didSearchWithData(_ data: [String : (IndexPath, String)], haveDeal: Bool, category: [String]) {
         
-        let term = (searchBar.text?.characters.count)! > 0 ? searchBar.text : "Viet"
+        let term = (searchBar.text?.characters.count)! > 0 ? searchBar.text : "Vietnamese"
         
         var sort: YelpSortMode = .bestMatched
         
@@ -123,14 +123,9 @@ extension BusinessesViewController: SearchButtonDelegate{
         }
         
         let distance = Int(data["Distance"]!.1)
+
         
-        print("distance \(distance)")
-        
-        let category = data["Category"]?.1 ?? ""
-        
-        print("have category: \(category)")
-        
-        Business.searchWithTerm(term, sort: sort, categories: [category], deals: haveDeal, distance: distance) { (businesses:[Business]?, error: Error?) in
+        Business.searchWithTerm(term, sort: sort, categories: category, deals: haveDeal, distance: distance) { (businesses:[Business]?, error: Error?) in
             self.businesses.removeAll()
             
             if let businesses = businesses {

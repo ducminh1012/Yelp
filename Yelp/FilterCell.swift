@@ -9,7 +9,7 @@
 import UIKit
 
 protocol DealCellDelegate: class {
-    func switchValueChange(value: Bool)
+    func switchValueChange(value: Bool, sender: UITableViewCell)
 }
 
 class FilterCell: UITableViewCell {
@@ -19,7 +19,7 @@ class FilterCell: UITableViewCell {
     @IBAction func switchValueChanged(_ sender: UISwitch) {
         
         switchValue = sender.isOn
-        dealCellDelegate.switchValueChange(value: sender.isOn)
+        dealCellDelegate.switchValueChange(value: sender.isOn, sender: self)
     }
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var haveDealSwitch: UISwitch!
