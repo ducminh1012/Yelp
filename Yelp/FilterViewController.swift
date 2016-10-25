@@ -8,15 +8,25 @@
 
 import UIKit
 
+protocol SearchButtonDelegate: class {
+    func didSearchWithData(_  data: [String: (IndexPath, String)], haveDeal: Bool)
+}
+
 class FilterViewController: UIViewController {
 
+    weak var searchDelegate: SearchButtonDelegate!
+    
     var isFiltered = ["Distance": false, "Sort": false, "Category": false]
+    var haveDeal = false
     
     var isExpand = ["Distance": false, "Sort": false, "Category": false]
     var filterData = ["Distance": ["0.3", "1", "2", "3", "4", "5"],
                           "Sort": ["Best match", "Distance", "Hightest rated"],
                           "Category": ["Viet", "Thai", "Korean"]]
+
+    
     var selectedFilter = [String: (IndexPath, String)]()
+    var categorySelected = [IndexPath: Bool]()
     
     @IBOutlet weak var filterTableView: UITableView!
     @IBAction func onCancelButton(_ sender: UIBarButtonItem) {
@@ -24,6 +34,10 @@ class FilterViewController: UIViewController {
     }
     
     @IBAction func onSearchButton(_ sender: UIBarButtonItem) {
+
+        
+        searchDelegate.didSearchWithData(selectedFilter, haveDeal: haveDeal)
+        self.dismiss(animated: true, completion: nil)
     }
     
     override func viewDidLoad() {
@@ -33,7 +47,7 @@ class FilterViewController: UIViewController {
         filterTableView.dataSource = self
         
         selectedFilter = ["Distance": (IndexPath(row: 0, section: 0),""), "Sort": (IndexPath(row: 0, section: 1),""), "Category": (IndexPath(row: 0, section: 2),"")]
-        
+        categorySelected = [IndexPath(row: 0, section: 0): false, IndexPath(row: 1, section: 0): false, IndexPath(row: 2, section: 0): false]
     }
 
 }
@@ -81,6 +95,7 @@ extension FilterViewController: UITableViewDelegate, UITableViewDataSource{
         switch indexPath.section {
         case 0:
             let filterCell = tableView.dequeueReusableCell(withIdentifier: "filterCell") as! FilterCell
+            filterCell.dealCellDelegate = self
             filterCell.selectedBackgroundView = UIView()
             return filterCell
         // Distance
@@ -119,13 +134,10 @@ extension FilterViewController: UITableViewDelegate, UITableViewDataSource{
             let filterCell = tableView.dequeueReusableCell(withIdentifier: "filterCell") as! FilterCell
             
             let index = selectedFilter["Category"]?.0
-//            if indexPath.row ==  index?.row || (indexPath.row == 0 && isFiltered["Category"]!){
-//                filterCell2.checkButton.setImage(UIImage(named: "check"), for: .normal)
-//            }else{
-//                filterCell2.checkButton.setImage(UIImage(named: "uncheck"), for: .normal)
-//            }
-//            
-//            filterCell2.distanceLabel.text = isFiltered["Category"]! ? selectedFilter["Category"]?.1 : filterData["Category"]?[indexPath.row]
+
+            
+//            filterCell.haveDealSwitch.setOn(categorySelected[indexPath]!, animated: false)
+            
             filterCell.titleLabel.text = isFiltered["Category"]! ? selectedFilter["Category"]?.1 : filterData["Category"]?[indexPath.row]
             filterCell.selectedBackgroundView = UIView()
             return filterCell
@@ -208,5 +220,11 @@ extension FilterViewController: UITableViewDelegate, UITableViewDataSource{
         print(selectedFilter)
         
         tableView.reloadData()
+    }
+}
+
+extension FilterViewController : DealCellDelegate{
+    func switchValueChange(value: Bool) {
+        haveDeal = value
     }
 }

@@ -8,10 +8,24 @@
 
 import UIKit
 
+protocol DealCellDelegate: class {
+    func switchValueChange(value: Bool)
+}
+
 class FilterCell: UITableViewCell {
 
+    weak var dealCellDelegate: DealCellDelegate!
+    
+    @IBAction func switchValueChanged(_ sender: UISwitch) {
+        
+        switchValue = sender.isOn
+        dealCellDelegate.switchValueChange(value: sender.isOn)
+    }
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var haveDealSwitch: UISwitch!
+    
+    var switchValue = false
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

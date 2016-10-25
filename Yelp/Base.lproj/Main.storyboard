@@ -34,7 +34,7 @@
                                                         <constraint firstAttribute="width" secondItem="GSa-2h-2TG" secondAttribute="height" multiplier="1:1" id="dNc-NB-Egs"/>
                                                     </constraints>
                                                 </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZvX-Tp-2Sk">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZvX-Tp-2Sk">
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="ZvX-Tp-2Sk" secondAttribute="height" multiplier="5:1" id="MXz-Fh-isU"/>
                                                         <constraint firstAttribute="height" constant="20" id="k8Y-07-zLz"/>
@@ -154,6 +154,9 @@
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Ho4-Ue-A86">
                                                     <color key="onTintColor" red="1" green="0.53543605770000002" blue="0.40784029300000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <connections>
+                                                        <action selector="switchValueChanged:" destination="zUk-f2-5gW" eventType="valueChanged" id="p2G-Ac-7sk"/>
+                                                    </connections>
                                                 </switch>
                                             </subviews>
                                             <constraints>

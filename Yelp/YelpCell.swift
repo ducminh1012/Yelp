@@ -25,12 +25,21 @@ class YelpCell: UITableViewCell {
     
     var data: Business!{
         didSet{
-            thumbImageView.setImageWith(data.imageURL!)
+            if let url = data.imageURL{
+                
+                thumbImageView.setImageWith(url)
+            }
             distanceLabel.text = data.distance
             nameLabel.text = data.name
             reviewLabel.text = "\(data.reviewCount!) Reviews"
             addressLabel.text = data.address
             categoryLabel.text = data.categories
+            
+            if let rateUrl = data.ratingImageURL {
+                
+                ratingImageView.setImageWith(rateUrl)
+            }
+            
         }
     }
     
