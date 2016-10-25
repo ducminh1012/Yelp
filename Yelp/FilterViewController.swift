@@ -22,7 +22,7 @@ class FilterViewController: UIViewController {
     var isExpand = ["Distance": false, "Sort": false, "Category": false]
     var filterData = ["Distance": ["0.3", "1", "2", "3", "4", "5"],
                           "Sort": ["Best matched", "Distance", "Hightest rated"],
-                          "Category": ["American", "Asian Fusion", "Chinese"]]
+                          "Category": ["icecream", "cheese", "tea"]]
 
     
     var selectedFilter = [String: (IndexPath, String)]()
