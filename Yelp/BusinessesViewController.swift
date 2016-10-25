@@ -106,7 +106,7 @@ extension BusinessesViewController: UISearchBarDelegate{
 extension BusinessesViewController: SearchButtonDelegate{
     func didSearchWithData(_ data: [String : (IndexPath, String)], haveDeal: Bool, category: [String]) {
         
-        let term = (searchBar.text?.characters.count)! > 0 ? searchBar.text : "Vietnamese"
+        let term = (searchBar.text?.characters.count)! > 0 ? searchBar.text : nil
         
         var sort: YelpSortMode = .bestMatched
         
