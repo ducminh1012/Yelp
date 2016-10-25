@@ -116,7 +116,7 @@ extension BusinessesViewController: SearchButtonDelegate{
         case "Hightest rated":
             sort = .highestRated
             
-        case "Best match":
+        case "Best matched":
             sort = .bestMatched
         default:
             break
