@@ -58,7 +58,10 @@ class YelpClient: BDBOAuth1RequestOperationManager {
         var parameters: [String : AnyObject] = ["ll": "37.785771,-122.406165" as AnyObject]
 
         if distance != nil {
-            parameters["radius_filter"] = distance as AnyObject?
+            
+            let m = distance! * 1609
+            
+            parameters["radius_filter"] = m as AnyObject
         }
         
         if term != nil{
