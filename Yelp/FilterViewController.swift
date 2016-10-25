@@ -14,8 +14,8 @@ class FilterViewController: UIViewController {
     
     var isExpand = ["Distance": false, "Sort": false, "Category": false]
     var filterData = ["Distance": ["0.3", "1", "2", "3", "4", "5"],
-                          "Sort": ["Best match"],
-                          "Category": ["Viet", "Thai"]]
+                          "Sort": ["Best match", "Distance", "Hightest rated"],
+                          "Category": ["Viet", "Thai", "Korean"]]
     var selectedFilter = [String: (IndexPath, String)]()
     
     @IBOutlet weak var filterTableView: UITableView!
@@ -116,18 +116,19 @@ extension FilterViewController: UITableViewDelegate, UITableViewDataSource{
             return filterCell2
         // Category
         case 3:
-            let filterCell2 = tableView.dequeueReusableCell(withIdentifier: "filterCell2") as! FilterCell2
+            let filterCell = tableView.dequeueReusableCell(withIdentifier: "filterCell") as! FilterCell
             
             let index = selectedFilter["Category"]?.0
-            if indexPath.row ==  index?.row || (indexPath.row == 0 && isFiltered["Category"]!){
-                filterCell2.checkButton.setImage(UIImage(named: "check"), for: .normal)
-            }else{
-                filterCell2.checkButton.setImage(UIImage(named: "uncheck"), for: .normal)
-            }
-            
-            filterCell2.distanceLabel.text = isFiltered["Category"]! ? selectedFilter["Category"]?.1 : filterData["Category"]?[indexPath.row]
-            filterCell2.selectedBackgroundView = UIView()
-            return filterCell2
+//            if indexPath.row ==  index?.row || (indexPath.row == 0 && isFiltered["Category"]!){
+//                filterCell2.checkButton.setImage(UIImage(named: "check"), for: .normal)
+//            }else{
+//                filterCell2.checkButton.setImage(UIImage(named: "uncheck"), for: .normal)
+//            }
+//            
+//            filterCell2.distanceLabel.text = isFiltered["Category"]! ? selectedFilter["Category"]?.1 : filterData["Category"]?[indexPath.row]
+            filterCell.titleLabel.text = isFiltered["Category"]! ? selectedFilter["Category"]?.1 : filterData["Category"]?[indexPath.row]
+            filterCell.selectedBackgroundView = UIView()
+            return filterCell
         default:
             let filterCell2 = tableView.dequeueReusableCell(withIdentifier: "filterCell2") as! FilterCell2
             filterCell2.selectedBackgroundView = UIView()

@@ -23,10 +23,10 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="yelpCell" rowHeight="142" id="HUc-dG-KeN" customClass="YelpCell" customModule="Yelp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="1000" height="142"/>
+                                        <rect key="frame" x="0.0" y="28" width="375" height="142"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="HUc-dG-KeN" id="OEL-Fp-oe3">
-                                            <frame key="frameInset" width="1000" height="141.5"/>
+                                            <frame key="frameInset" width="375" height="141"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GSa-2h-2TG">
@@ -144,7 +144,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zUk-f2-5gW" id="rhr-gJ-PJ7">
-                                            <frame key="frameInset" width="375" height="43.5"/>
+                                            <frame key="frameInset" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Offerring a Deal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R4Y-9u-f3T">
@@ -152,25 +152,28 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ho4-Ue-A86"/>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Ho4-Ue-A86">
+                                                    <color key="onTintColor" red="1" green="0.53543605770000002" blue="0.40784029300000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </switch>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="Ho4-Ue-A86" secondAttribute="trailing" constant="8" id="Awy-T0-BY9"/>
                                                 <constraint firstItem="Ho4-Ue-A86" firstAttribute="centerY" secondItem="rhr-gJ-PJ7" secondAttribute="centerY" id="HiS-zh-C6w"/>
-                                                <constraint firstItem="R4Y-9u-f3T" firstAttribute="leading" secondItem="rhr-gJ-PJ7" secondAttribute="leading" constant="8" id="MUR-bA-0u4"/>
+                                                <constraint firstItem="R4Y-9u-f3T" firstAttribute="leading" secondItem="rhr-gJ-PJ7" secondAttribute="leading" constant="20" id="MUR-bA-0u4"/>
                                                 <constraint firstItem="R4Y-9u-f3T" firstAttribute="centerY" secondItem="rhr-gJ-PJ7" secondAttribute="centerY" id="tig-rN-rAj"/>
                                                 <constraint firstItem="Ho4-Ue-A86" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="R4Y-9u-f3T" secondAttribute="trailing" constant="10" id="wbU-Gd-N4e"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="haveDealSwitch" destination="Ho4-Ue-A86" id="jUx-js-Hoq"/>
+                                            <outlet property="titleLabel" destination="R4Y-9u-f3T" id="C0J-X0-rGy"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="filterCell2" id="eHe-ay-i0I" customClass="FilterCell2" customModule="Yelp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="72" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eHe-ay-i0I" id="ACJ-i0-9Zf">
-                                            <frame key="frameInset" width="375" height="43.5"/>
+                                            <frame key="frameInset" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Distance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YTJ-iG-P8F">
@@ -186,7 +189,7 @@
                                                 </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="YTJ-iG-P8F" firstAttribute="leading" secondItem="ACJ-i0-9Zf" secondAttribute="leading" constant="8" id="Chl-de-ecK"/>
+                                                <constraint firstItem="YTJ-iG-P8F" firstAttribute="leading" secondItem="ACJ-i0-9Zf" secondAttribute="leading" constant="20" id="Chl-de-ecK"/>
                                                 <constraint firstItem="TmE-I0-Ik0" firstAttribute="top" secondItem="ACJ-i0-9Zf" secondAttribute="top" constant="8" id="bvY-eL-t0X"/>
                                                 <constraint firstAttribute="trailing" secondItem="TmE-I0-Ik0" secondAttribute="trailing" constant="8" id="gXB-CX-IeW"/>
                                                 <constraint firstItem="TmE-I0-Ik0" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="YTJ-iG-P8F" secondAttribute="trailing" constant="10" id="gge-sJ-cUx"/>
